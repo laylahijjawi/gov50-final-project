@@ -17,10 +17,61 @@ I am unsure of what exactly I want to explore in this project. I am potentially 
 
 Does oil revenue impact democratization or the likelihood of civil war in North African or Middle Eastern nations over time?
 
-In this study, I plan to examine the extent to which oil as a significant source of revenue improves or worsens democratization or the likelihood of civil war in North Africa and the Middle East. I hypothesize that the likelihood of civil war will decrease if oil revenue is present. I believe this because extra revenue could allow governments to invest in stabilizing measures regardless of the type of regime or government. I also hypothesize that democratization will decrease further for North African and Middle Eastern nations that are non-democratic if oil revenues are present. I believe this because while extra revenue may allow nations to invest in stabilizing measures, if these nations are authoritarian, these extra measures may be similarly autocratic, thus decreasing democratization. 
+In this study, I plan to examine the extent to which oil as a significant source of revenue is associated with better or worse democratization or the likelihood of civil war in North Africa and the Middle East. I hypothesize that the likelihood of civil war will decrease if oil revenue is present. I believe this because extra revenue could allow governments to invest in stabilizing measures regardless of the type of regime or government. I also hypothesize that democratization will decrease further for North African and Middle Eastern nations if oil revenues are present. I believe this because research related to dependence on natural resource wealth suggests that countries with economies primarily dependent on extraction of resources like oil increases authoritarianism. 
 
 My sample is comprised of North African and Middle Eastern countries from 1945 to 1999. My unit of analysis is a country (e.g. “Cyprus”). The explanatory variable of interest is whether a nation has greater than one-third of export revenues from fuels or not. The variable is coded = 1 for greater than one-third of export revenues from fuels and = 0 for the opposite. 
 
 My outcome variable is whether or not civil war was occurring in a given year and polity, or the index of democratization for each nation. For civil war, the variable is coded = 1 if civil war is occurring in a given year and = 0 if it is not occurring. For polity, countries are assigned scores in a range of -10 to 10, with 10 representing a consolidated autocracy and -10 representing a consolidated autocracy. 
 
 If I observe that civil war occurs less frequently and that polity decreases for nations with oil revenue, this would provide evidence for my hypothesis. However, if I observe that civil war occurs more frequently and that polity increases for nations with oil revenue, this would provide evidence against my thesis. 
+
+## Milestone 3
+
+```{r}
+library(tidyverse)
+library(dplyr)
+library(ggplot2)
+
+data <- read_csv("data/civilwar.csv") 
+```
+```{r}
+
+polity_data <- data |>
+  mutate(
+    oil_rev = if_else(Oil == 1, "Oil Dependence", "Low Oil Dependence")
+  ) |>
+  group_by(oil_rev, year) |>
+  summarize(avg_polity = mean(polity2, na.rm = TRUE)) 
+
+polity_plot <- polity_data |>
+  ggplot(mapping = aes(x = year, y = avg_polity, color = oil_rev)) +
+  geom_smooth() +
+  labs(
+    x = "Year",
+    y = "Average Polity Score",
+    title = "Polity Over Time For Oil Dependent vs Non-Oil Dependent Countries",
+    color = "Oil Dependence"
+  )
+
+polity_plot
+
+
+```
+how to get just plots to show?
+
+
+```{r}
+war_data <- data |>
+  mutate(
+    oil_rev = if_else(Oil == 1, "Oil Dependence", "Low Oil Dependence")
+  ) 
+
+war_plot <- war_data |>
+  group_by(oil_rev, year) |>
+  summarize(avg_war = mean(war, na.rm = TRUE)) |>
+  ggplot(mapping = aes(x = year, y = avg_war, color = oil_rev)) +
+  geom_smooth()
+
+war_plot
+```
+should i do avg war?
