@@ -36,12 +36,16 @@ data <- read_csv("data/civilwar.csv")
 ```
 ```{r}
 
+# Create oil_rev variable and calculate avg polity by oil_rev
+
 polity_data <- data |>
   mutate(
     oil_rev = if_else(Oil == 1, "Oil Dependence", "Low Oil Dependence")
   ) |>
   group_by(oil_rev, year) |>
   summarize(avg_polity = mean(polity2, na.rm = TRUE)) 
+
+# Graph polity over time for oil dependent and non-oil dependent nations
 
 polity_plot <- polity_data |>
   ggplot(mapping = aes(x = year, y = avg_polity, color = oil_rev)) +
@@ -57,21 +61,30 @@ polity_plot
 
 
 ```
-how to get just plots to show?
 
 
 ```{r}
+
+# Create oil dependence variable
+
 war_data <- data |>
   mutate(
     oil_rev = if_else(Oil == 1, "Oil Dependence", "Low Oil Dependence")
   ) 
 
+# Graph the proportion of active civil war over time for oil-dependent and non-oil dependent countries
+
 war_plot <- war_data |>
   group_by(oil_rev, year) |>
-  summarize(avg_war = mean(war, na.rm = TRUE)) |>
-  ggplot(mapping = aes(x = year, y = avg_war, color = oil_rev)) +
-  geom_smooth()
+  summarize(prop_war = mean(war, na.rm = TRUE)) |>
+  ggplot(mapping = aes(x = year, y = prop_war, color = oil_rev)) +
+  geom_smooth() +
+  labs(
+    x = "Year",
+    y = "Proportion of Active Civil War",
+    title = "Proportion of Active Civil War over Time for Oil-Dependent and Non-Oil Dependent Countries",
+    color = "Oil Dependence"
+  )
 
 war_plot
 ```
-should i do avg war?
