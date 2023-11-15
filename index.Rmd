@@ -88,3 +88,43 @@ war_plot <- war_data |>
 
 war_plot
 ```
+
+
+## Milestone 4
+
+```{r}
+library(broom)
+
+# Mutates oil_rev variable 
+data <- data |>
+  mutate(
+    oil_rev = if_else(Oil == 1, "Oil Dependence", "Low Oil Dependence")
+  )
+
+# Creates regression with polity as outcome and oil revenue/dependence as predictor
+fit_1 <- lm(polity2 ~ oil_rev, data = data)
+
+# Creates tables of results
+
+fit_1 |>
+  broom::tidy() |>
+  select(term, estimate) |>
+  knitr::kable(digits = 2)
+```
+The intercept reveals that if a country has low oil dependence (oil_rev = 0), the estimated polity is 0.12 points. The slope or oil_revOilDependence coefficient reveals that the difference in polity between countries with oil revenue dependence versus low oil revenue dependence is -4.12 points on average. In other words, on average oil dependent nations have a polity score -4.12 points lower than countries with low oil dependence. There is a negative association between being oil dependence and polity. 
+
+```{r}
+
+# Creates regression with war as outcome and oil revenue/dependence as predictor
+fit_2 <- lm(war ~ oil_rev, data = data)
+
+# Creates tables of results
+
+fit_2 |>
+  broom::tidy() |>
+  select(term, estimate) |>
+  knitr::kable(digits = 2)
+```
+The intercept reveals that if a country has low oil dependence (oil_rev = 0), the estimated proportion of civil war is 0.14. The slope or oil_revOilDependence coefficient reveals that the difference in proportion of civil war between countries with oil revenue dependence versus low oil revenue dependence is -0.01. In other words, on average oil dependent nations experience 1% less civil war than counties with low oil dependence. 
+
+
