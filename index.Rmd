@@ -102,8 +102,9 @@ data <- data |>
   )
 
 # Creates regression with polity as outcome and oil revenue/dependence as predictor
-fit_1 <- lm(polity2 ~ oil_rev, data = data)
-
+data$oil_reserve_situation<-data$oil_rev
+fit_1 <- lm(polity2 ~ oil_reserve_situation, data = data)
+summary(fit_1)
 # Creates tables of results
 
 fit_1 |>
@@ -116,7 +117,7 @@ The intercept reveals that if a country has low oil dependence (oil_rev = 0), th
 ```{r}
 
 # Creates regression with war as outcome and oil revenue/dependence as predictor
-fit_2 <- lm(war ~ oil_rev, data = data)
+fit_2 <- lm(war ~ oil_reserve_situation, data = data)
 
 # Creates tables of results
 
