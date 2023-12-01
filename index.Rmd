@@ -128,4 +128,19 @@ fit_2 |>
 ```
 The intercept reveals that if a country has low oil dependence (oil_rev = 0), the estimated proportion of civil war is 0.14. The slope or oil_revOilDependence coefficient reveals that the difference in proportion of civil war between countries with oil revenue dependence versus low oil revenue dependence is -0.01. In other words, on average oil dependent nations experience 1% less civil war than counties with low oil dependence. 
 
+# Re-Written Introduction
 
+Does oil revenue impact democratization or the likelihood of civil war in countries over time?
+
+In this study, I plan to examine the extent to which oil as a significant source of revenue is associated with better or worse democratization or the likelihood of civil war in a country. I hypothesize that the likelihood of civil war will decrease if oil revenue is present. I believe this because extra revenue could allow governments to invest in stabilizing measures regardless of the type of regime or government. I also hypothesize that democratization will decrease to a greater degree for nations if oil revenues are present. I believe this because research related to dependence on natural resource wealth suggests that countries with economies primarily dependent on extraction of resources like oil increases authoritarianism. 
+
+This question is interesting because it is necessary to analyze information about the effects of natural resource revenue and, particularly, whether these effects are destabilizing or cement authoritarian governance to understand the best policy responses to resolve these stability and governance dilemmas. If oil revenue dependence has a significant correlation with civil war or authoritarianism, that suggests it is a factor worth analyzing and including when constructing solutions to these problems. 
+
+
+# Re-Written Data Section
+
+My sample is comprised of world countries from 1945 to 1999. My unit of analysis is a country (e.g. “Cyprus”). The explanatory or independent variable of interest is whether a nation has greater than one-third of export revenues from fuels or not. The variable is coded = 1 if greater than one-third of export revenues comes from fuels and is coded = 0 for the opposite. 
+
+My outcome or dependent variable of interest is whether or not civil war was occurring in a given year and polity, or the index of democratization for each nation. For civil war, the variable is coded = 1 if civil war is occurring in a given year and = 0 if it is not occurring. For polity, countries are assigned scores in a range of -10 to 10, with 10 representing a consolidated autocracy and -10 representing a consolidated autocracy. 
+
+If I observe that civil war occurs less frequently and that polity decreases for nations with oil revenue, this would provide evidence for my hypothesis. However, if I observe that civil war occurs more frequently and that polity increases for nations with oil revenue, this would provide evidence against my thesis. 
