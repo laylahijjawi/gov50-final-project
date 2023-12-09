@@ -115,7 +115,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["data/civilwar.csv","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-2-1.png","index_files/figure-html5/unnamed-chunk-3-1.png","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.24/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["data/civilwar.csv","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-2-1.png","index_files/figure-html5/unnamed-chunk-3-1.png","index_files/figure-html5/unnamed-chunk-6-1.png","index_files/figure-html5/unnamed-chunk-6-2.png","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.24/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1525,20 +1525,30 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p>My sample is comprised of North African and Middle Eastern countries from 1945 to 1999. My unit of analysis is a country (e.g. “Cyprus”). The explanatory variable of interest is whether a nation has greater than one-third of export revenues from fuels or not. The variable is coded = 1 for greater than one-third of export revenues from fuels and = 0 for the opposite.</p>
 <p>My outcome variable is whether or not civil war was occurring in a given year and polity, or the index of democratization for each nation. For civil war, the variable is coded = 1 if civil war is occurring in a given year and = 0 if it is not occurring. For polity, countries are assigned scores in a range of -10 to 10, with 10 representing a consolidated autocracy and -10 representing a consolidated autocracy.</p>
 <p>If I observe that civil war occurs less frequently and that polity decreases for nations with oil revenue, this would provide evidence for my hypothesis. However, if I observe that civil war occurs more frequently and that polity increases for nations with oil revenue, this would provide evidence against my thesis.</p>
-<h2 id="milestone-3">Milestone 3</h2>
+<h2 id="introduction">Introduction</h2>
+<p>Does oil revenue impact democratization or the likelihood of civil war in countries over time?</p>
+<p>In this study, I plan to examine the extent to which oil as a significant source of revenue is associated with better or worse democratization or the likelihood of civil war in a country. I hypothesize that the likelihood of civil war will decrease if oil revenue is present. I believe this because extra revenue could allow governments to invest in stabilizing measures regardless of the type of regime or government. I also hypothesize that democratization will decrease to a greater degree for nations if oil revenues are present. I believe this because research related to dependence on natural resource wealth suggests that countries with economies primarily dependent on extraction of resources like oil increases authoritarianism.</p>
+<p>This question is interesting because it is necessary to analyze information about the effects of natural resource revenue and, particularly, whether these effects are destabilizing or cement authoritarian governance to understand the best policy responses to resolve these stability and governance dilemmas. If oil revenue dependence has a significant correlation with civil war or authoritarianism, that suggests it is a factor worth analyzing and including when constructing solutions to these problems.</p>
+<h2 id="data">Data</h2>
+<p>This is an observational study, and, more specifically, a cross sectional analysis. My sample is comprised of world countries from 1945 to 1999. My unit of analysis is a country (e.g. “Cyprus”). The explanatory or independent variable of interest is whether a nation has greater than one-third of export revenues from fuels or not. The variable is coded = 1 if greater than one-third of export revenues comes from fuels and is coded = 0 for the opposite.</p>
+<p>My outcome or dependent variable of interest is whether or not civil war was occurring in a given year and polity, or the index of democratization for each nation. For civil war, the variable is coded = 1 if civil war is occurring in a given year and = 0 if it is not occurring. For polity, countries are assigned scores in a range of -10 to 10, with 10 representing a consolidated autocracy and -10 representing a consolidated autocracy.</p>
+<p>If I observe that civil war occurs less frequently and that polity decreases for nations with oil revenue, this would provide evidence for my hypothesis. However, if I observe that civil war occurs more frequently and that polity increases for nations with oil revenue, this would provide evidence against my thesis.</p>
+<h2 id="results">Results</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span></span>
 <span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span></span>
 <span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span></span>
 <span></span>
+<span><span class='co'># Load data</span></span>
 <span><span class='va'>data</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"data/civilwar.csv"</span><span class='op'>)</span> </span></code></pre>
 </div>
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Create oil_rev variable and calculate avg polity by oil_rev</span></span>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># POLITY AND OIL REVENUE</span></span>
 <span></span>
+<span><span class='co'># Create oil_rev variable and calculate avg polity by oil_rev</span></span>
 <span><span class='va'>polity_data</span> <span class='op'>&lt;-</span> <span class='va'>data</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span></span>
 <span>    oil_rev <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/if_else.html'>if_else</a></span><span class='op'>(</span><span class='va'>Oil</span> <span class='op'>==</span> <span class='fl'>1</span>, <span class='st'>"Oil Dependence"</span>, <span class='st'>"Low Oil Dependence"</span><span class='op'>)</span></span>
@@ -1547,7 +1557,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>avg_polity <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>polity2</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> </span>
 <span></span>
 <span><span class='co'># Graph polity over time for oil dependent and non-oil dependent nations</span></span>
-<span></span>
 <span><span class='va'>polity_plot</span> <span class='op'>&lt;-</span> <span class='va'>polity_data</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>year</span>, y <span class='op'>=</span> <span class='va'>avg_polity</span>, color <span class='op'>=</span> <span class='va'>oil_rev</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
@@ -1564,15 +1573,15 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Create oil dependence variable</span></span>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># CIVIL WAR AND OIL REVENUE</span></span>
 <span></span>
+<span><span class='co'># Create oil dependence variable</span></span>
 <span><span class='va'>war_data</span> <span class='op'>&lt;-</span> <span class='va'>data</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span></span>
 <span>    oil_rev <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/if_else.html'>if_else</a></span><span class='op'>(</span><span class='va'>Oil</span> <span class='op'>==</span> <span class='fl'>1</span>, <span class='st'>"Oil Dependence"</span>, <span class='st'>"Low Oil Dependence"</span><span class='op'>)</span></span>
 <span>  <span class='op'>)</span> </span>
 <span></span>
 <span><span class='co'># Graph the proportion of active civil war over time for oil-dependent and non-oil dependent countries</span></span>
-<span></span>
 <span><span class='va'>war_plot</span> <span class='op'>&lt;-</span> <span class='va'>war_data</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>oil_rev</span>, <span class='va'>year</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>prop_war <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>war</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
@@ -1589,10 +1598,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 <p><img src="index_files/figure-html5/unnamed-chunk-3-1.png" width="624" /></p>
 </div>
-<h2 id="milestone-4">Milestone 4</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://broom.tidymodels.org/'>broom</a></span><span class='op'>)</span></span>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># POLITY AND OIL REVENUE (regression)</span></span>
+<span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://broom.tidymodels.org/'>broom</a></span><span class='op'>)</span></span>
 <span></span>
 <span><span class='co'># Mutates oil_rev variable </span></span>
 <span><span class='va'>data</span> <span class='op'>&lt;-</span> <span class='va'>data</span> <span class='op'>|&gt;</span></span>
@@ -1629,7 +1639,6 @@ Multiple R-squared:  0.03384,   Adjusted R-squared:  0.03369
 F-statistic: 229.2 on 1 and 6545 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Creates tables of results</span></span>
-<span></span>
 <span><span class='va'>fit_1</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'>broom</span><span class='fu'>::</span><span class='fu'><a href='https://generics.r-lib.org/reference/tidy.html'>tidy</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>term</span>, <span class='va'>estimate</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
@@ -1657,11 +1666,12 @@ F-statistic: 229.2 on 1 and 6545 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>The intercept reveals that if a country has low oil dependence (oil_rev = 0), the estimated polity is 0.12 points. The slope or oil_revOilDependence coefficient reveals that the difference in polity between countries with oil revenue dependence versus low oil revenue dependence is -4.12 points on average. In other words, on average oil dependent nations have a polity score -4.12 points lower than countries with low oil dependence. There is a negative association between being oil dependence and polity.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Creates regression with war as outcome and oil revenue/dependence as predictor</span></span>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># CIVIL WAR AND OIL REVENUE (regression)</span></span>
+<span></span>
+<span><span class='co'># Creates regression with war as outcome and oil revenue/dependence as predictor</span></span>
 <span><span class='va'>fit_2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>war</span> <span class='op'>~</span> <span class='va'>oil_reserve_situation</span>, data <span class='op'>=</span> <span class='va'>data</span><span class='op'>)</span></span>
 <span></span>
 <span><span class='co'># Creates tables of results</span></span>
-<span></span>
 <span><span class='va'>fit_2</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'>broom</span><span class='fu'>::</span><span class='fu'><a href='https://generics.r-lib.org/reference/tidy.html'>tidy</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>term</span>, <span class='va'>estimate</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
@@ -1687,20 +1697,63 @@ F-statistic: 229.2 on 1 and 6545 DF,  p-value: &lt; 2.2e-16</code></pre>
 </table>
 </div>
 <p>The intercept reveals that if a country has low oil dependence (oil_rev = 0), the estimated proportion of civil war is 0.14. The slope or oil_revOilDependence coefficient reveals that the difference in proportion of civil war between countries with oil revenue dependence versus low oil revenue dependence is -0.01. In other words, on average oil dependent nations experience 1% less civil war than counties with low oil dependence.</p>
-<h1 id="re-written-introduction">Re-Written Introduction</h1>
-<p>Does oil revenue impact democratization or the likelihood of civil war in countries over time?</p>
-<p>In this study, I plan to examine the extent to which oil as a significant source of revenue is associated with better or worse democratization or the likelihood of civil war in a country. I hypothesize that the likelihood of civil war will decrease if oil revenue is present. I believe this because extra revenue could allow governments to invest in stabilizing measures regardless of the type of regime or government. I also hypothesize that democratization will decrease to a greater degree for nations if oil revenues are present. I believe this because research related to dependence on natural resource wealth suggests that countries with economies primarily dependent on extraction of resources like oil increases authoritarianism.</p>
-<p>This question is interesting because it is necessary to analyze information about the effects of natural resource revenue and, particularly, whether these effects are destabilizing or cement authoritarian governance to understand the best policy responses to resolve these stability and governance dilemmas. If oil revenue dependence has a significant correlation with civil war or authoritarianism, that suggests it is a factor worth analyzing and including when constructing solutions to these problems.</p>
-<h1 id="re-written-data-section">Re-Written Data Section</h1>
-<p>This is an observational study, and, more specifically, a cross sectional analysis. My sample is comprised of world countries from 1945 to 1999. My unit of analysis is a country (e.g. “Cyprus”). The explanatory or independent variable of interest is whether a nation has greater than one-third of export revenues from fuels or not. The variable is coded = 1 if greater than one-third of export revenues comes from fuels and is coded = 0 for the opposite.</p>
-<p>My outcome or dependent variable of interest is whether or not civil war was occurring in a given year and polity, or the index of democratization for each nation. For civil war, the variable is coded = 1 if civil war is occurring in a given year and = 0 if it is not occurring. For polity, countries are assigned scores in a range of -10 to 10, with 10 representing a consolidated autocracy and -10 representing a consolidated autocracy.</p>
-<p>If I observe that civil war occurs less frequently and that polity decreases for nations with oil revenue, this would provide evidence for my hypothesis. However, if I observe that civil war occurs more frequently and that polity increases for nations with oil revenue, this would provide evidence against my thesis.</p>
 <h2 id="conclusion">Conclusion</h2>
 <p>The graph of polity over time for oil dependent versus non-oil dependent nations mostly reflects my hypothesis that oil dependence is associated with authoritarianism. Over the time period analyzed, oil dependent nations consistently had lower polity scores compared to non-oil dependent nations.</p>
 <p>However, the graph of civil war occurrence over time for oil dependent versus non-oil dependent nations does not clearly reflect my hypothesis that oil dependence is associated with less civil war, and by extension, more stability. Civil war alternates between being more frequent in oil dependent and non-oil dependent nations before appearing to converge at the end of the time period measured. Thus, we cannot establish whether or not oil revenue is associated with civil war.</p>
-<p>Regardless of these results, there are some critical limitations that mean we cannot assert a causal relation between oil revenue and polity or civil war. This study is observational meaning I did not control for potential confounding variables.</p>
+<p>Regardless of these results, there are some critical limitations that mean we cannot assert a causal relation between oil revenue and polity or civil war. This study is observational meaning I did not control for potential confounding variables. For example, GDP per capita may be a confounding variable as fluctuations in GDP may impact a country’s ability or desire to pursue oil extraction, and by extension, have an economy dependent on oil. It also could impact both polity and civil war occurrence as low GDP may produce instability in a nation, increasing a nation’s vulnerability to poor leadership due to poor institution management with insufficient funding (polity) as well as increasing overall instability and tension (civil war).</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>gdp_plot_polity</span> <span class='op'>&lt;-</span> <span class='va'>data</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>gdpen</span>, y <span class='op'>=</span> <span class='va'>polity2</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span></span>
+<span>    y <span class='op'>=</span> <span class='st'>"Polity"</span>,</span>
+<span>    x <span class='op'>=</span> <span class='st'>"GDP per Capita"</span></span>
+<span>  <span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>gdp_plot_polity</span></span></code></pre>
+</div>
+<img src="index_files/figure-html5/unnamed-chunk-6-1.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>gdp_plot_war</span> <span class='op'>&lt;-</span> <span class='va'>data</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>gdpen</span>, y <span class='op'>=</span> <span class='va'>war</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span></span>
+<span>    y <span class='op'>=</span> <span class='st'>"Civil War"</span>,</span>
+<span>    x <span class='op'>=</span> <span class='st'>"GDP per Capita"</span></span>
+<span>  <span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>gdp_plot_war</span></span></code></pre>
+</div>
+<img src="index_files/figure-html5/unnamed-chunk-6-2.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>fit_war_gdp</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>war</span> <span class='op'>~</span> <span class='va'>gdpen</span>, data <span class='op'>=</span> <span class='va'>data</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>fit_war_gdp</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>
+Call:
+lm(formula = war ~ gdpen, data = data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.18405 -0.17030 -0.14820 -0.07421  1.00666 
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  0.1846608  0.0055130   33.50   &lt;2e-16 ***
+gdpen       -0.0126261  0.0009477  -13.32   &lt;2e-16 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 0.3403 on 6381 degrees of freedom
+  (227 observations deleted due to missingness)
+Multiple R-squared:  0.02707,   Adjusted R-squared:  0.02691 
+F-statistic: 177.5 on 1 and 6381 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<p>In the data analysis above, there seems to be a negative relationship between GDP per capita and civil war occurrence. The summary of the regression of the relationship between GDP and civil war occurrence reveals that the relationship appears to be statistically significant, meaning we have reason to believe GDP per capita may be a confounder, complicating our ability to assert that a causal relationship exists between oil revenue and civil war.</p>
 <p>With more time, a technique that may reduce some of the risk of confounding variables could be creating two pools of countries with oil dependent and without oil dependence and randomly sampling countries from these pools. While countries wouldn’t be randomly assigned to treatment, random sampling could still reduce confounders. Additionally, had I run a regression while holding other potential confounders constant, that method could have been a more plausible way to measure causality, though still imperfect.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
