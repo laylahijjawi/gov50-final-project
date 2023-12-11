@@ -83,7 +83,7 @@ data |>
 # Create oil_rev variable and calculate avg polity by oil_rev
 polity_data <- data |>
   mutate(
-    oil_rev = if_else(Oil == 1, "Oil Dependence", "Low Oil Dependence")
+    oil_rev = if_else(Oil == 1, "High Oil Revenue", "Low Oil Revenue")
   ) 
   
 
@@ -96,8 +96,8 @@ polity_plot <- polity_data |>
   labs(
     x = "Year",
     y = "Average Polity Score",
-    title = "Polity Over Time For Oil Dependent vs Non-Oil Dependent Countries",
-    color = "Oil Dependence"
+    title = "Polity Over Time for High Oil Revenue vs Low Oil Revenue Countries",
+    color = "Oil Revenue"
   )
 
 polity_plot
@@ -112,7 +112,7 @@ polity_plot
 # Create oil dependence variable
 war_data <- data |>
   mutate(
-    oil_rev = if_else(Oil == 1, "Oil Dependence", "Low Oil Dependence")
+    oil_rev = if_else(Oil == 1, "High Oil Revenue", "Low Oil Revenue")
   ) 
 
 # Graph the proportion of active civil war over time for oil-dependent and non-oil dependent countries
@@ -124,8 +124,8 @@ war_plot <- war_data |>
   labs(
     x = "Year",
     y = "Proportion of Active Civil War",
-    title = "Proportion of Active Civil War over Time for Oil-Dependent and Non-Oil Dependent Countries",
-    color = "Oil Dependence"
+    title = "Proportion of Active Civil War over Time for High Oil Revenue vs Low Oil Revenue Countries",
+    color = "Oil Revenue Status"
   )
 
 war_plot
