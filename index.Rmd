@@ -35,11 +35,13 @@ This hypothesis is interesting because it is necessary to analyze information ab
 
 ## Data
 
-This is an observational study, and, more specifically, a cross sectional analysis. My sample is comprised of world countries from 1945 to 1999. My unit of analysis is a country (e.g. “Cyprus”). The explanatory or independent variable of interest is whether a nation has greater than one-third of export revenues from fuels or not. The variable is coded = 1 if greater than one-third of export revenues comes from fuels and is coded = 0 for the opposite. 
+The source of my data is from a study conducted by James Fearson and David Laitin for their journal article "Ethnicity, Insurgency, and Civil War." Their dataset is comprised of world countries with a population of at least half a million in 1990. There are 161 countries in total. The data spans from the years of 1945 to 1999. My analysis can be categorized as an observational study, and, more specifically, a cross sectional analysis. My unit of analysis is a country (e.g. “Vietnam”). The explanatory or independent variable of interest is whether a nation has greater than one-third of export revenues from fuels or not. The variable is coded = 1 if greater than one-third of export revenues comes from fuels and is coded = 0 for the opposite. This can be measured simply using economic data for countries. 
 
-My outcome or dependent variable of interest is whether or not civil war was occurring in a given year and polity, or the index of democratization for each nation. For civil war, the variable is coded = 1 if civil war is occurring in a given year and = 0 if it is not occurring. For polity, countries are assigned scores in a range of -10 to 10, with 10 representing a consolidated autocracy and -10 representing a consolidated autocracy. 
+My outcome or dependent variable of interest is whether or not civil war was occurring in a given year and polity, or the index of democratization for each nation. For civil war, the `war` variable is coded = 1 if civil war is occurring in a given year and = 0 if it is not occurring. The civil war data comes from Fearson and Laitin, as the researchers have a series of requirements that must be met for a conflict to be classified as a civil war. If a conflict in a given country meets those criteria, it will be classified as an active civil war. For polity, a measure of authoritarianism, countries are assigned scores in a range of -10 to 10 for the `polity2` variable, with 10 representing a consolidated autocracy and -10 representing a consolidated autocracy. The polity data comes from the Center for Systemic Peace's "Polity Project," and they specifically use the Polity IV dataset for their `polity2` variable for authoritarianism.  
 
 If I observe that civil war occurs less frequently and that polity decreases for nations with oil revenue, this would provide evidence for my hypothesis. However, if I observe that civil war occurs more frequently and that polity increases for nations with oil revenue, this would provide evidence against my thesis.
+
+
 
 ```{r}
 library(tidyverse)
