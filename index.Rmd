@@ -27,11 +27,11 @@ If I observe that civil war occurs less frequently and that polity decreases for
 
 ## Introduction
 
-Does oil revenue impact democratization or the likelihood of civil war in countries over time?
+Does oil revenue impact democratization or the presence of civil war in countries over time?
 
-In this study, I plan to examine the extent to which oil as a significant source of revenue is associated with better or worse democratization or the likelihood of civil war in a country. I hypothesize that the likelihood of civil war will decrease if oil revenue is present. I believe this because extra revenue could allow governments to invest in stabilizing measures regardless of the type of regime or government. I also hypothesize that democratization will decrease to a greater degree for nations if oil revenues are present. I believe this because research related to dependence on natural resource wealth suggests that countries with economies primarily dependent on extraction of resources like oil increases authoritarianism. 
+In this study, I plan to examine the extent to which oil as a significant source of revenue is associated with better or worse democratization or the presence of civil war in a country. I hypothesize that democratization will decrease to a greater degree for nations if oil revenues are present. I believe this because dependence on natural resource wealth can decrease leaders' incentives to invest in alternative forms of economic prosperity that require more democratized industries. I also hypothesize that the presence of civil war will decrease if oil revenue is present. I believe this because extra revenue could allow governments to invest in stabilizing measures regardless of the type of regime or government.
 
-This question is interesting because it is necessary to analyze information about the effects of natural resource revenue and, particularly, whether these effects are destabilizing or cement authoritarian governance to understand the best policy responses to resolve these stability and governance dilemmas. If oil revenue dependence has a significant correlation with civil war or authoritarianism, that suggests it is a factor worth analyzing and including when constructing solutions to these problems. 
+This hypothesis is interesting because it is necessary to analyze information about the effects of natural resource revenue and, particularly, whether these effects are destabilizing or cement authoritarian governance to understand the best policy responses to resolve these stability and governance dilemmas. If oil revenue dependence has a significant correlation with civil war or authoritarianism, that suggests it is a factor worth analyzing and including when constructing solutions to these problems. 
 
 ## Data
 
@@ -41,8 +41,6 @@ My outcome or dependent variable of interest is whether or not civil war was occ
 
 If I observe that civil war occurs less frequently and that polity decreases for nations with oil revenue, this would provide evidence for my hypothesis. However, if I observe that civil war occurs more frequently and that polity increases for nations with oil revenue, this would provide evidence against my thesis.
 
-## Results
-
 ```{r}
 library(tidyverse)
 library(dplyr)
@@ -50,7 +48,35 @@ library(ggplot2)
 
 # Load data
 data <- read_csv("data/civilwar.csv") 
+
+# Create polity visualization
+data |>
+  group_by(year) |>
+  summarize(avg_polity = mean(polity2, na.rm = TRUE)) |>
+  ggplot(mapping = aes(x = year, y = avg_polity)) +
+  geom_smooth() +
+  labs(
+    title = "Average Global Polity Over Time",
+    y = "Polity Score",
+    x = "Year"
+  )
+
+# Create civil war visualization
+data |>
+  group_by(year) |>
+  summarize(war_prop = mean(war, na.rm = TRUE)) |>
+  ggplot(mapping = aes(x = year, y = war_prop)) +
+  geom_smooth() +
+  labs(
+    title = "Proportion of Active Global Civil War",
+    y = "Active Civil War Proportion",
+    x = "Year"
+  )
 ```
+
+
+## Results
+
 ```{r}
 # POLITY AND OIL REVENUE
 
@@ -58,12 +84,13 @@ data <- read_csv("data/civilwar.csv")
 polity_data <- data |>
   mutate(
     oil_rev = if_else(Oil == 1, "Oil Dependence", "Low Oil Dependence")
-  ) |>
-  group_by(oil_rev, year) |>
-  summarize(avg_polity = mean(polity2, na.rm = TRUE)) 
+  ) 
+  
 
 # Graph polity over time for oil dependent and non-oil dependent nations
 polity_plot <- polity_data |>
+  group_by(oil_rev, year) |>
+  summarize(avg_polity = mean(polity2, na.rm = TRUE)) |>
   ggplot(mapping = aes(x = year, y = avg_polity, color = oil_rev)) +
   geom_smooth() +
   labs(
@@ -127,7 +154,6 @@ fit_1 |>
 
 summary(fit_1)
 ```
-The intercept reveals that if a country has low oil dependence (oil_rev = 0), the estimated polity is 0.12 points. The slope or oil_revOilDependence coefficient reveals that the difference in polity between countries with oil revenue dependence versus low oil revenue dependence is -4.12 points on average. In other words, on average oil dependent nations have a polity score -4.12 points lower than countries with low oil dependence. There is a negative association between being oil dependence and polity. According to the summary of the regression, this relationship is statistically significant meaning that the relationship between polity and oil revenue is unlikely to be due to chance.
 
 ```{r}
 # CIVIL WAR AND OIL REVENUE (regression)
@@ -143,11 +169,15 @@ fit_2 |>
 
 summary(fit_2)
 ```
-The intercept reveals that if a country has low oil dependence (oil_rev = 0), the estimated proportion of civil war is 0.14. The slope or oil_revOilDependence coefficient reveals that the difference in proportion of civil war between countries with oil revenue dependence versus low oil revenue dependence is -0.01. In other words, on average oil dependent nations experience 1% less civil war than counties with low oil dependence. However, according to the summary of the regression, the relationship between civil war and oil revenue is not statistically significant, meaning it is possible that the relationship may be due to chance and we cannot assume causality from the coefficients we observe.  
+Regarding the relationship between oil revenue and polity (the measure of authoritarianism), the plot of polity over time grouped by oil revenue reveals that countries with a low oil revenue (less than 1/3 of export revenues) consistently had higher polity scores on average compared to countries with high oil revenue (greater than 1/3 of export revenues). The intercept reveals that if a country has low oil revenue (oil_rev = 0), the estimated polity is 0.12 points. The slope or oil_revOilDependence coefficient reveals that the difference in polity between countries with high oil revenue versus low oil revenue is -4.12 points on average. In other words, on average, nations with high oil revenue have a polity score 4.12 points lower than countries with low oil revenue There is a negative association between high oil revenue and polity. According to the summary of the regression, this relationship is statistically significant meaning that the relationship between polity and oil revenue is unlikely to be due to chance. 
+
+causality?
+
+Regarding the relationship between oil revenue and civil war, the plot of active civil war proportion over time grouped by oil revenue does not reveal a clear relationship between oil revenue and civil war. There are some periods of time where countries with low oil revenue experienced higher rates of civil war than countries with high oil revenue, but there are also some periods of time where this relationship flipped. The intercept reveals that if a country has low oil revenue (oil_rev = 0), the estimated proportion of active civil war is 0.14. The slope or oil_revOilDependence coefficient reveals that the difference in proportion of active civil war between countries with high oil revenue  versus low oil revenue is -0.01. In other words, on average, nations with high oil revenue experience 1% less civil war than counties with low oil revenue However, according to the summary of the regression, the relationship between civil war and oil revenue is not statistically significant, meaning it is possible that the relationship may be due to chance and we cannot assume causality from the coefficients we observe. This supports my analysis of the plot of oil revenue and civil war.  
 
 ## Conclusion
 
-The graph of polity over time for oil dependent versus non-oil dependent nations mostly reflects my hypothesis that oil dependence is associated with authoritarianism. Over the time period analyzed, oil dependent nations consistently had lower polity scores compared to non-oil dependent nations. Similarly, my regression analysis of oil revenue and polity reveals that there is a statistically significant, negative relationship between the two variables, meaning this relationship is unlikely to be due to chance.
+The graph of polity over time for oil dependent versus non-oil dependent nations reflects my hypothesis that oil dependence is associated with authoritarianism to a great extent. Over the time period analyzed, oil dependent nations consistently had lower polity scores compared to non-oil dependent nations. Similarly, my regression analysis of oil revenue and polity reveals that there is a statistically significant, negative relationship between the two variables, meaning this relationship is unlikely to be due to chance.
 
 However, the graph of civil war occurrence over time for oil dependent versus non-oil dependent nations does not clearly reflect my hypothesis that oil dependence is associated with less civil war, and by extension, more stability. Civil war alternates between being more frequent in oil dependent and non-oil dependent nations before appearing to converge at the end of the time period measured. These findings are supported by my regression analysis of oil revenue and civil war, since the relationship between the two variables was not statistically signficant. Thus, we cannot establish whether or not oil revenue is associated with civil war.  
 
