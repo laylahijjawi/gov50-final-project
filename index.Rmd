@@ -118,15 +118,16 @@ data <- data |>
 # Creates regression with polity as outcome and oil revenue/dependence as predictor
 data$oil_reserve_situation<-data$oil_rev
 fit_1 <- lm(polity2 ~ oil_reserve_situation, data = data)
-summary(fit_1)
 
 # Creates tables of results
 fit_1 |>
   broom::tidy() |>
   select(term, estimate) |>
   knitr::kable(digits = 2)
+
+summary(fit_1)
 ```
-The intercept reveals that if a country has low oil dependence (oil_rev = 0), the estimated polity is 0.12 points. The slope or oil_revOilDependence coefficient reveals that the difference in polity between countries with oil revenue dependence versus low oil revenue dependence is -4.12 points on average. In other words, on average oil dependent nations have a polity score -4.12 points lower than countries with low oil dependence. There is a negative association between being oil dependence and polity. 
+The intercept reveals that if a country has low oil dependence (oil_rev = 0), the estimated polity is 0.12 points. The slope or oil_revOilDependence coefficient reveals that the difference in polity between countries with oil revenue dependence versus low oil revenue dependence is -4.12 points on average. In other words, on average oil dependent nations have a polity score -4.12 points lower than countries with low oil dependence. There is a negative association between being oil dependence and polity. According to the summary of the regression, this relationship is statistically significant meaning that the relationship between polity and oil revenue is unlikely to be due to chance.
 
 ```{r}
 # CIVIL WAR AND OIL REVENUE (regression)
@@ -139,14 +140,16 @@ fit_2 |>
   broom::tidy() |>
   select(term, estimate) |>
   knitr::kable(digits = 2)
+
+summary(fit_2)
 ```
-The intercept reveals that if a country has low oil dependence (oil_rev = 0), the estimated proportion of civil war is 0.14. The slope or oil_revOilDependence coefficient reveals that the difference in proportion of civil war between countries with oil revenue dependence versus low oil revenue dependence is -0.01. In other words, on average oil dependent nations experience 1% less civil war than counties with low oil dependence. 
+The intercept reveals that if a country has low oil dependence (oil_rev = 0), the estimated proportion of civil war is 0.14. The slope or oil_revOilDependence coefficient reveals that the difference in proportion of civil war between countries with oil revenue dependence versus low oil revenue dependence is -0.01. In other words, on average oil dependent nations experience 1% less civil war than counties with low oil dependence. However, according to the summary of the regression, the relationship between civil war and oil revenue is not statistically significant, meaning it is possible that the relationship may be due to chance and we cannot assume causality from the coefficients we observe.  
 
 ## Conclusion
 
-The graph of polity over time for oil dependent versus non-oil dependent nations mostly reflects my hypothesis that oil dependence is associated with authoritarianism. Over the time period analyzed, oil dependent nations consistently had lower polity scores compared to non-oil dependent nations. 
+The graph of polity over time for oil dependent versus non-oil dependent nations mostly reflects my hypothesis that oil dependence is associated with authoritarianism. Over the time period analyzed, oil dependent nations consistently had lower polity scores compared to non-oil dependent nations. Similarly, my regression analysis of oil revenue and polity reveals that there is a statistically significant, negative relationship between the two variables, meaning this relationship is unlikely to be due to chance.
 
-However, the graph of civil war occurrence over time for oil dependent versus non-oil dependent nations does not clearly reflect my hypothesis that oil dependence is associated with less civil war, and by extension, more stability. Civil war alternates between being more frequent in oil dependent and non-oil dependent nations before appearing to converge at the end of the time period measured. Thus, we cannot establish whether or not oil revenue is associated with civil war.  
+However, the graph of civil war occurrence over time for oil dependent versus non-oil dependent nations does not clearly reflect my hypothesis that oil dependence is associated with less civil war, and by extension, more stability. Civil war alternates between being more frequent in oil dependent and non-oil dependent nations before appearing to converge at the end of the time period measured. These findings are supported by my regression analysis of oil revenue and civil war, since the relationship between the two variables was not statistically signficant. Thus, we cannot establish whether or not oil revenue is associated with civil war.  
 
 Regardless of these results, there are some critical limitations that mean we cannot assert a causal relation between oil revenue and polity or civil war. This study is observational meaning I did not control for potential confounding variables. For example, GDP per capita may be a confounding variable as fluctuations in GDP may impact a country's ability or desire to pursue oil extraction, and by extension, have an economy dependent on oil. It also could impact both polity and civil war occurrence as low GDP may produce instability in a nation, increasing a nation's vulnerability to poor leadership due to poor institution management with insufficient funding (polity) as well as increasing overall instability and tension (civil war).
 
