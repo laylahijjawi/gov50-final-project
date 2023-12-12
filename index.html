@@ -1517,14 +1517,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 
 <div class="d-article">
-<h2 id="milestone-1-project-thoughts">Milestone 1: Project thoughts</h2>
-<p>I am unsure of what exactly I want to explore in this project. I am potentially interested in exploring data related to racial disparities. I would also be interested into political data related to polarization. Because I live in Utah, I think it would be interesting to explore political data related to recent bills blocking gender affirming care. I’d also perhaps be interested in looking at data related to socioeconomic or racial disparities in the water crisis in Utah.</p>
-<h2 id="milestone-2-data-selection">Milestone 2: Data Selection</h2>
-<p>Does oil revenue impact democratization or the likelihood of civil war in North African or Middle Eastern nations over time?</p>
-<p>In this study, I plan to examine the extent to which oil as a significant source of revenue is associated with better or worse democratization or the likelihood of civil war in North Africa and the Middle East. I hypothesize that the likelihood of civil war will decrease if oil revenue is present. I believe this because extra revenue could allow governments to invest in stabilizing measures regardless of the type of regime or government. I also hypothesize that democratization will decrease further for North African and Middle Eastern nations if oil revenues are present. I believe this because research related to dependence on natural resource wealth suggests that countries with economies primarily dependent on extraction of resources like oil increases authoritarianism.</p>
-<p>My sample is comprised of North African and Middle Eastern countries from 1945 to 1999. My unit of analysis is a country (e.g. “Cyprus”). The explanatory variable of interest is whether a nation has greater than one-third of export revenues from fuels or not. The variable is coded = 1 for greater than one-third of export revenues from fuels and = 0 for the opposite.</p>
-<p>My outcome variable is whether or not civil war was occurring in a given year and polity, or the index of democratization for each nation. For civil war, the variable is coded = 1 if civil war is occurring in a given year and = 0 if it is not occurring. For polity, countries are assigned scores in a range of -10 to 10, with 10 representing a consolidated autocracy and -10 representing a consolidated autocracy.</p>
-<p>If I observe that civil war occurs less frequently and that polity decreases for nations with oil revenue, this would provide evidence for my hypothesis. However, if I observe that civil war occurs more frequently and that polity increases for nations with oil revenue, this would provide evidence against my thesis.</p>
 <h2 id="introduction">Introduction</h2>
 <p>Does oil revenue impact democratization or the presence of civil war in countries over time?</p>
 <p>In this study, I plan to examine the extent to which oil as a significant source of revenue is associated with better or worse democratization or the presence of civil war in a country. I hypothesize that democratization will decrease to a greater degree for nations if significant oil revenues are present. I believe this because dependence on natural resource wealth might decrease leaders’ incentives to invest in alternative forms of economic prosperity that require more democratized industries. I also hypothesize that the presence of civil war will decrease if oil revenue is present. I believe this because extra revenue could allow governments to invest in stabilizing measures regardless of the type of regime or government.</p>
@@ -1543,33 +1535,38 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <span><span class='va'>data</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"data/civilwar.csv"</span><span class='op'>)</span> </span>
 <span></span>
 <span><span class='co'># Create polity visualization</span></span>
-<span><span class='va'>data</span> <span class='op'>|&gt;</span></span>
+<span><span class='va'>polity_visual</span> <span class='op'>&lt;-</span> <span class='va'>data</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>year</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>avg_polity <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>polity2</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>year</span>, y <span class='op'>=</span> <span class='va'>avg_polity</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span></span>
-<span>    title <span class='op'>=</span> <span class='st'>"Average Global Polity Over Time"</span>,</span>
+<span>    title <span class='op'>=</span> <span class='st'>"Average Polity Over Time"</span>,</span>
 <span>    y <span class='op'>=</span> <span class='st'>"Polity Score"</span>,</span>
 <span>    x <span class='op'>=</span> <span class='st'>"Year"</span></span>
-<span>  <span class='op'>)</span></span></code></pre>
+<span>  <span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>polity_visual</span></span></code></pre>
 </div>
 <img src="index_files/figure-html5/unnamed-chunk-1-1.png" width="624" />
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Create civil war visualization</span></span>
-<span><span class='va'>data</span> <span class='op'>|&gt;</span></span>
+<span><span class='va'>war_visual</span> <span class='op'>&lt;-</span> <span class='va'>data</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>year</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>war_prop <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>war</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>year</span>, y <span class='op'>=</span> <span class='va'>war_prop</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span></span>
-<span>    title <span class='op'>=</span> <span class='st'>"Proportion of Active Global Civil War"</span>,</span>
+<span>    title <span class='op'>=</span> <span class='st'>"Proportion of Active Civil War"</span>,</span>
 <span>    y <span class='op'>=</span> <span class='st'>"Active Civil War Proportion"</span>,</span>
 <span>    x <span class='op'>=</span> <span class='st'>"Year"</span></span>
-<span>  <span class='op'>)</span></span></code></pre>
+<span>  <span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>war_visual</span></span></code></pre>
 </div>
 <p><img src="index_files/figure-html5/unnamed-chunk-1-2.png" width="624" /></p>
 </div>
+<p>The above visualizations of my dependent variables reveal that, on average, polity scores among the 161 countries included in the dataset decreased until the 1970s. Since then, average polity scores have increased. Meanwhile, the proportion of active civil war in the countries included in the dataa set has increased throughout the time period in which data was gathered, except for near the final years of the 1990s when the proportion of active civil war decreased.</p>
 <h2 id="results">Results</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
