@@ -9,21 +9,19 @@ output:
 
 ## Introduction
 
-Does oil revenue impact democratization or the presence of civil war in countries over time?
+Does oil revenue impact authoritarianism or the presence of civil war in countries over time? In this study, I plan to examine the extent to which oil as a significant source of revenue is associated with authoritarianism or the presence of civil war in a country. 
 
-In this study, I plan to examine the extent to which oil as a significant source of revenue is associated with better or worse democratization or the presence of civil war in a country. I hypothesize that democratization will decrease to a greater degree for nations if significant oil revenues are present. I believe this because, according to Michael Ross's "Does Oil Hinder Democracy," (2001) dependence on natural resource wealth might decrease leaders' incentives to invest in alternative forms of economic prosperity that require more democratized industries. This effect is dubbed the "modernization effect," since resource led growth does not usually produce the same social and cultural changes associated with democracies that follow other forms of economic development  (Ross, 2001). I also hypothesize that the presence of civil war will decrease if oil revenue is present. I believe this because, according to Kevin Morrison's "Oil, Nontax Revenue, and the Redistributional Foundations of Regime Status," (2009) natural resource revenue could allow governments to invest in stabilizing measures regardless of the type of regime or government without the potentially destabilizing effects of increased taxation, given that resource revenue, such as oil, is often understood as "nontax" revenue. 
+I hypothesize that authoritarianism will increase to a greater degree for nations if significant oil revenues are present. I believe this because, according to Michael Ross's "Does Oil Hinder Democracy," (2001) dependence on natural resource wealth occassionally decreases leaders' incentives to invest in alternative forms of economic prosperity that require more democratized industries. This effect is dubbed the "modernization effect," since resource led growth does not usually produce the same social and cultural changes associated with democracies that follow other forms of economic development  (Ross, 2001). 
+
+I also hypothesize that the presence of civil war will decrease if oil revenue is present. I believe this because, according to Kevin Morrison's "Oil, Nontax Revenue, and the Redistributional Foundations of Regime Status," (2009) natural resource revenue could allow governments to invest in stabilizing measures regardless of the type of regime or government without the potentially destabilizing effects of increased taxation, given that resource revenue, such as oil, is often understood as "nontax" revenue since it is an alternative form of profit production to taxation. 
 
 This hypothesis is interesting because it is necessary to analyze information about the effects of natural resource revenue and, particularly, whether these effects are destabilizing or cement authoritarian governance to understand the best policy responses to resolve these stability and governance dilemmas. If oil revenue dependence has a significant correlation with civil war or authoritarianism, that suggests it is a factor worth analyzing and including when constructing policy solutions to these problems. 
 
 ## Data
 
-The source of my data is from a study conducted by James Fearson and David Laitin for their journal article "Ethnicity, Insurgency, and Civil War." Their dataset is comprised of world countries with a population of at least half a million in 1990. There are 161 countries in total. The data spans from the years of 1945 to 1999. My analysis can be categorized as an observational study, and, more specifically, a cross sectional analysis. My unit of analysis is a country (e.g. “Vietnam”). The explanatory or independent variable of interest is whether a nation has greater than one-third of export revenues from fuels or not. The variable is coded = 1 if greater than one-third of export revenues comes from fuels and is coded = 0 for the opposite. This can be measured simply using economic data for countries. 
+The source of my data is from a study conducted by James Fearson and David Laitin for their journal article "Ethnicity, Insurgency, and Civil War." Their dataset is comprised of world countries with a population of at least half a million in 1990. There are 161 countries in total. The data spans from the years of 1945 to 1999. My analysis can be categorized as an observational study, and, more specifically, a cross sectional analysis since I'll be comparing different countries over the same period of time. My unit of analysis is a country (e.g. “Vietnam”). The explanatory or independent variable of interest is whether a nation has greater than one-third of export revenues from fuels or not. The variable is coded = 1 if greater than one-third of export revenues comes from fuels and is coded = 0 for the opposite. It appears that Fearson and Laitin measure this variable simply by using countries' raw economic data. 
 
-My outcome or dependent variable of interest is whether or not civil war was occurring in a given year and polity, or the index of democratization for each nation. For civil war, the `war` variable is coded = 1 if civil war is occurring in a given year and = 0 if it is not occurring. The civil war data comes from Fearson and Laitin, as the researchers have a series of requirements that must be met for a conflict to be classified as a civil war. If a conflict in a given country meets those criteria, it will be classified as an active civil war. For polity, a measure of authoritarianism, countries are assigned scores in a range of -10 to 10 for the `polity2` variable, with 10 representing a consolidated autocracy and -10 representing a consolidated autocracy. The polity data comes from the Center for Systemic Peace's "Polity Project," and they specifically use the Polity IV dataset for their `polity2` variable for authoritarianism.  
-
-If I observe that civil war occurs less frequently and that polity is lower for nations with high oil revenue than nations with low oil revenue, this would provide evidence for my hypothesis. However, if I observe that civil war occurs more frequently and that polity is higher for nations with high oil revenue, this would provide evidence against my thesis.
-
-
+My first outcome or dependent variable of interest is whether or not civil war was occurring in a given year and polity, or the index of democratization for each nation. For civil war, the `war` variable is coded = 1 if civil war is occurring in a given year and = 0 if it is not occurring. The civil war data comes from Fearson and Laitin, as the researchers have a series of requirements that must be met for a conflict to be classified as a civil war. If a conflict in a given country meets those criteria, it will be measured as an active civil war. My second outcome variable is polity, a quantitative measure of authoritarianism. Countries are assigned scores in a range of -10 to 10 for the `polity2` variable, with 10 representing a consolidated autocracy and -10 representing a consolidated autocracy. The polity data comes from the Center for Systemic Peace's "Polity Project," and Fearson and Laitin specifically use the Polity IV dataset for their `polity2` variable measures.  
 
 ```{r}
 library(tidyverse)
@@ -61,9 +59,15 @@ war_visual <- data |>
 
 war_visual
 ```
-The above visualizations of my dependent variables reveal that, on average, polity scores among the 161 countries included in the dataset decreased until the 1970s. Since then, average polity scores have increased. Meanwhile, the proportion of active civil war in the countries included in the dataa set has increased throughout the time period in which data was gathered, except for near the final years of the 1990s when the proportion of active civil war decreased. 
+The above visualizations of my dependent variables reveal that, on average, polity scores among the 161 countries included in the dataset decreased until the 1970s. Since then, average polity scores have increased. Meanwhile, the proportion of active civil war in the countries included in the data set has increased throughout the time period in which data was gathered, except for near the final years of the 1990s when the proportion of active civil war decreased slightly. 
+
+Regarding my hypothesis, if I observe that civil war occurs less frequently and that polity is lower for nations with high oil revenue than nations with low oil revenue, this would provide evidence for my hypothesis. However, if I observe that civil war occurs more frequently and that polity is higher for nations with high oil revenue, this would provide evidence against my hypothesis. Similarly, if no relationship is apparent between my independent and dependent variables, I would lack the evidence necessary to defend my hypothesis. 
 
 ## Results
+
+Regarding the relationship between oil revenue and polity, the plot of polity over time grouped by oil revenue (shown below) reveals that countries with a low oil revenue (less than 1/3 of export revenues) consistently had higher polity scores on average compared to countries with high oil revenue (greater than 1/3 of export revenues). Furthermore, according to my regression below, the intercept coefficient reveals that if a country has low oil revenue (oil_rev = 0), the estimated polity is 0.12 points. The oil_revOilDependence coefficient reveals that the difference in polity between countries with high oil revenue versus low oil revenue is -4.12 points on average. In other words, on average, nations with high oil revenue have a polity score 4.12 points lower than countries with low oil revenue There is a negative association between high oil revenue and polity. According to the summary of the regression, this relationship is statistically significant at the 0.01 level, meaning that the relationship between polity and oil revenue is unlikely to be due to chance. 
+
+However, I'd be hesitant to suggest that we should interpret this relationship causally. Because this study and the data it uses is purely observational, there were no control mechanisms, such as random assignment or random sampling, used in the study to control confounding variables. Thus, there is a risk that the effects I observed are the result of confounders rather than a causal relationship between oil revenue and polity. For example, region is a confounder because certain regions may allow for more oil extraction while also being more prone to high concentrations of authoritarianism.
 
 ```{r}
 # POLITY AND OIL REVENUE
@@ -93,6 +97,32 @@ polity_plot
 
 ```
 
+```{r}
+# POLITY AND OIL REVENUE (regression)
+
+library(broom)
+library(stargazer)
+
+# Mutates oil_rev variable 
+data <- data |>
+  mutate(
+    oil_rev = if_else(Oil == 1, "Oil Dependence", "Low Oil Dependence")
+  )
+
+# Creates regression with polity as outcome and oil revenue/dependence as predictor
+data$oil_reserve_situation<-data$oil_rev
+fit_1 <- lm(polity2 ~ oil_reserve_situation, data = data)
+
+# Creates tables of results
+fit_1 |>
+  broom::tidy() |>
+  select(term, estimate) |>
+  knitr::kable(digits = 2)
+
+stargazer(fit_1, type= "text")
+```
+
+Regarding the relationship between oil revenue and civil war, the plot of active civil war proportion over time grouped by oil revenue (shown below) does not reveal a clear relationship between oil revenue and civil war. There are some periods of time where countries with low oil revenue experienced higher rates of civil war than countries with high oil revenue, but there are also some periods of time where this relationship flipped. According to the regression below, the intercept reveals that if a country has low oil revenue (oil_rev = 0), the estimated proportion of active civil war is 0.14. The oil_revOilDependence coefficient reveals that the difference in proportion of active civil war between countries with high oil revenue  versus low oil revenue is -0.01. In other words, on average, nations with high oil revenue experience a rate of civil war 1 percentage point lower than countries with low oil revenue. However, according to the regression, the relationship between civil war and oil revenue is not statistically significant at the 0.01, 0.05, or 0.1 levels, meaning it is possible that the relationship may be due to chance and we cannot assume causality from the coefficients we observe. Again, the lack of control of confounding variables is a serious inhibitor on our ability to assert that a causal relationship exists between oil revenue and active civil war. 
 
 ```{r}
 # CIVIL WAR AND OIL REVENUE
@@ -120,31 +150,6 @@ war_plot
 ```
 
 ```{r}
-# POLITY AND OIL REVENUE (regression)
-
-library(broom)
-library(stargazer)
-
-# Mutates oil_rev variable 
-data <- data |>
-  mutate(
-    oil_rev = if_else(Oil == 1, "Oil Dependence", "Low Oil Dependence")
-  )
-
-# Creates regression with polity as outcome and oil revenue/dependence as predictor
-data$oil_reserve_situation<-data$oil_rev
-fit_1 <- lm(polity2 ~ oil_reserve_situation, data = data)
-
-# Creates tables of results
-fit_1 |>
-  broom::tidy() |>
-  select(term, estimate) |>
-  knitr::kable(digits = 2)
-
-stargazer(fit_1, type= "text")
-```
-
-```{r}
 # CIVIL WAR AND OIL REVENUE (regression)
 
 # Creates regression with war as outcome and oil revenue/dependence as predictor
@@ -158,13 +163,10 @@ fit_2 |>
 
 stargazer(fit_2, type= "text")
 ```
-Regarding the relationship between oil revenue and polity (the measure of authoritarianism), the plot of polity over time grouped by oil revenue reveals that countries with a low oil revenue (less than 1/3 of export revenues) consistently had higher polity scores on average compared to countries with high oil revenue (greater than 1/3 of export revenues). The intercept reveals that if a country has low oil revenue (oil_rev = 0), the estimated polity is 0.12 points. The slope or oil_revOilDependence coefficient reveals that the difference in polity between countries with high oil revenue versus low oil revenue is -4.12 points on average. In other words, on average, nations with high oil revenue have a polity score 4.12 points lower than countries with low oil revenue There is a negative association between high oil revenue and polity. According to the summary of the regression, this relationship is statistically significant at the 0.01 level, meaning that the relationship between polity and oil revenue is unlikely to be due to chance. However, I'd be hesitant to suggest that we should interpret this relationship causally. Because this study and the data it uses is purely observational, there were no control mechanisms, such as random assignment or random sampling, used in the study to control confounding variables. Thus, there is a risk that the effects I observed are the result of confounders rather than a causal relationship between oil revenue and polity. For example, region is a confounder because certain regions may allow for more oil extraction while also being more prone to high concentrations of authoritarianism. 
-
-Regarding the relationship between oil revenue and civil war, the plot of active civil war proportion over time grouped by oil revenue does not reveal a clear relationship between oil revenue and civil war. There are some periods of time where countries with low oil revenue experienced higher rates of civil war than countries with high oil revenue, but there are also some periods of time where this relationship flipped. The intercept reveals that if a country has low oil revenue (oil_rev = 0), the estimated proportion of active civil war is 0.14. The slope or oil_revOilDependence coefficient reveals that the difference in proportion of active civil war between countries with high oil revenue  versus low oil revenue is -0.01. In other words, on average, nations with high oil revenue experience 1% less civil war than counties with low oil revenue However, according to the summary of the regression, the relationship between civil war and oil revenue is not statistically significant, meaning it is possible that the relationship may be due to chance and we cannot assume causality from the coefficients we observe. Again, the lack of control of confounding variables is a serious inhibitor on our ability to assert that a causal relationship exists between oil revenue and active civil war. 
 
 ## Conclusion
 
-The graph of polity over time for oil dependent versus non-oil dependent nations reflects my hypothesis that oil dependence is associated with authoritarianism to a great extent. Over the time period analyzed, oil dependent nations consistently had lower polity scores compared to non-oil dependent nations. Similarly, my regression analysis of oil revenue and polity reveals that there is a statistically significant, negative relationship between the two variables, meaning this relationship is unlikely to be due to chance.
+The graph of polity over time for oil dependent versus non-oil dependent nations provides evidence for my hypothesis that oil dependence is associated with authoritarianism to a great extent. Over the time period analyzed, oil dependent nations consistently had lower polity scores compared to non-oil dependent nations. Similarly, my regression analysis of oil revenue and polity reveals that there is a statistically significant, negative relationship between the two variables, meaning this relationship is unlikely to be due to chance.
 
 However, the graph of civil war occurrence over time for oil dependent versus non-oil dependent nations does not clearly reflect my hypothesis that oil dependence is associated with less civil war, and by extension, more stability. Civil war alternates between being more frequent in oil dependent and non-oil dependent nations before appearing to converge at the end of the time period measured. These findings are supported by my regression analysis of oil revenue and civil war, since the relationship between the two variables was not statistically significant. Thus, we cannot establish whether or not oil revenue is associated with civil war.  
 
@@ -210,6 +212,6 @@ stargazer(fit_oil_gdp, type= "text")
 ```
 
 
-In the data analysis above, there seems to be a negative relationship between GDP per capita and civil war occurrence. The summary of the regression of the relationship between GDP and civil war occurrence reveals that higher GDP is associated with a 1.2 percentage point decrease in civil war and that the relationship appears to be statistically significant at the 0.01 level. Similarly, higher GDP is associated with a 1.3 percentage point increase in oil revenue, and the summary of the regression reveals this relationship is statistically significant at the 0.01 level. Thus, we have reason to believe GDP per capita may be a confounder, as it appears to have a relationship to both oil revenue and active. civil war, complicating our ability to assert that a causal relationship exists between oil revenue and civil war. 
+In the data analysis above, there seems to be a negative relationship between GDP per capita and civil war occurrence. The summary of the regression of the relationship between GDP and civil war occurrence reveals that higher GDP is associated with a 1.3 percentage point decrease in civil war and that the relationship appears to be statistically significant at the 0.01 level. Similarly, higher GDP is associated with a 1.3 percentage point increase in oil revenue, and the summary of the regression reveals this relationship is statistically significant at the 0.01 level. Thus, we have reason to believe GDP per capita may be a confounder, as it appears to have a relationship to both oil revenue and active. civil war, complicating our ability to assert that a causal relationship exists between oil revenue and civil war. 
 
-With more time, a technique that may reduce some of the risk of confounding variables could be creating two pools of countries with oil dependent and without oil dependence and randomly sampling countries from these pools. While countries wouldn't be randomly assigned to treatment, random sampling could still reduce confounders. Additionally, had I run a regression while holding other potential confounders constant, that method could have been a more plausible way to measure causality, though still imperfect. I would also hope to analyze these relationships in more countries since the original dataset only included 161 countries. 
+With more time, a technique that may reduce some of the risk of confounding variables could be creating two pools of countries with oil dependent and without oil dependence and randomly sampling countries from these pools. While countries wouldn't be randomly assigned to treatment, random sampling could still reduce confounders. Additionally, had I run a regression while holding other potential confounders constant, that method could have been a more plausible way to measure causality, though still imperfect. I would also hope to analyze these relationships in more countries since the original dataset only included 161 countries. Including more units of analysis may provide a more accurate reflection of general trends in the relationship between oil revenue and authoritarianism and civil war. 
